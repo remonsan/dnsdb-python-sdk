@@ -1,43 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Dnsdb-python-sdk by dnsdb-team</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <title>DnsDB Python SDK by dnsdb-team</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Dnsdb-python-sdk</h1>
-        <p></p>
+    <div id="container">
+      <div class="inner">
 
-        <p class="view"><a href="https://github.com/dnsdb-team/dnsdb-python-sdk">View the Project on GitHub <small>dnsdb-team/dnsdb-python-sdk</small></a></p>
+        <header>
+          <h1>DnsDB Python SDK</h1>
+          <h2></h2>
+        </header>
 
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/dnsdb-team/dnsdb-python-sdk/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/dnsdb-team/dnsdb-python-sdk/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/dnsdb-team/dnsdb-python-sdk" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
 
-        <ul>
-          <li><a href="https://github.com/dnsdb-team/dnsdb-python-sdk/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/dnsdb-team/dnsdb-python-sdk/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/dnsdb-team/dnsdb-python-sdk">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
-<a id="dnsdb-python-sdk" class="anchor" href="#dnsdb-python-sdk" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>dnsdb-python-sdk</h1>
+        <hr>
 
-<p><strong>dnsdb-python-sdk</strong> 是<a href="https://dnsdb.io">DnsDB</a>为开发者提供的python SDK。使用该SDK，您可以方便的将DnsDB的查询服务集成到您的python应用中，您也可以利用它来导出查询结果。</p>
+        <section id="main_content">
+          <h1>
+<a id="dnsdb-python-sdk" class="anchor" href="#dnsdb-python-sdk" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DnsDB Python SDK</h1>
 
-<ul>
-<li><a href="https://dnsdb.io">DnsDB官网</a></li>
-<li><a href="https://dnsdb.io/apiservice">DnsDB API服务介绍</a></li>
-<li><a href="https://dnsdb.io/apidoc/">DnsDB Web API</a></li>
-</ul>
+<p><img src="https://dnsdb.io/static/img/dnsdb.png" alt="DnsDB" title="DnsDB"></p>
+
+<p><strong>dnsdb-python-sdk</strong> 是<a href="https://dnsdb.io">DnsDB</a>为开发者提供的python SDK。使用该SDK，您可以方便的将DnsDB的查询服务集成到您的python应用中，您也可以利用它来导出查询结果。<a href="https://github.com/dnsdb-team/dnsdb-python-sdk/wiki/Tutorials">查看教程</a></p>
 
 <h1>
 <a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h1>
@@ -47,29 +46,23 @@
 sudo python setup.py install</pre></div>
 
 <h1>
-<a id="quick-start" class="anchor" href="#quick-start" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Quick Start:</h1>
+<a id="相关链接" class="anchor" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>相关链接</h1>
 
-<div class="highlight highlight-source-python"><pre><span class="pl-k">from</span> __future__ <span class="pl-k">import</span> print_function
-<span class="pl-k">from</span> dnsdb.api <span class="pl-k">import</span> APIClient
+<ul>
+<li><a href="https://github.com/dnsdb-team/dnsdb-python-sdk/wiki/Tutorials">教程</a></li>
+<li><a href="https://dnsdb.io">DnsDB官网</a></li>
+<li><a href="https://dnsdb.io/apiservice">DnsDB API服务介绍</a></li>
+<li><a href="https://dnsdb.io/apidoc/">DnsDB Web API</a></li>
+</ul>
+        </section>
 
-client <span class="pl-k">=</span> APIClient()
-auth <span class="pl-k">=</span> client.authorize(<span class="pl-s"><span class="pl-pds">"</span>your username<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>your password<span class="pl-pds">"</span></span>)
-<span class="pl-k">if</span> auth.success:
-    access_token <span class="pl-k">=</span> auth.access_token
-    response <span class="pl-k">=</span> client.search_dns(<span class="pl-v">access_token</span><span class="pl-k">=</span>access_token, <span class="pl-v">domain</span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>github.com<span class="pl-pds">"</span></span>)
-    <span class="pl-k">if</span> response.success:
-        <span class="pl-c1">print</span>(response.content[<span class="pl-s"><span class="pl-pds">'</span>data<span class="pl-pds">'</span></span>])
-    <span class="pl-k">else</span>:
-        <span class="pl-c1">print</span>(response.error)
-<span class="pl-k">else</span>:
-    <span class="pl-c1">print</span>(auth.error)</pre></div>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/dnsdb-team">dnsdb-team</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+        <footer>
+          DnsDB Python SDK is maintained by <a href="https://github.com/dnsdb-team">dnsdb-team</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
   </body>
 </html>
