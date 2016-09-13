@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from api import APIClient
-import errors
+from .api import APIClient
+from .errors import DnsDBException, AuthenticationError, APIServerError
 import json
 import datetime
 import logging
@@ -78,7 +78,7 @@ class RetrieveResult(object):
         self.current_set = []
 
     def __next__(self):
-        self.next()
+        return self.next()
 
     def next(self):
         if len(self.current_set) == 0:
@@ -92,7 +92,7 @@ class RetrieveResult(object):
                     return data
                 else:
                     raise StopIteration
-            except errors.DnsDBException as e:
+            except DnsDBException as e:
                 if e.value == 'Not found':
                     raise StopIteration
                 else:
@@ -113,7 +113,7 @@ def require_token(func):
     def _check(*args, **kw):
         client = args[0]
         if client.access_token is None or client.access_token.is_empty():
-            raise errors.AuthenticationError.require_login_error()
+            raise AuthenticationError.require_login_error()
         if client.access_token.has_expired():
             client.refresh_access_token()
         return func(*args, **kw)
@@ -134,7 +134,7 @@ class DnsDBClient(object):
         self.password = password
         auth = self.api_client.authorize(self.username, self.password)
         if auth.has_error():
-            raise errors.AuthenticationError(auth.message)
+            raise AuthenticationError(auth.message)
         self.access_token = AccessToken(auth.access_token, auth.expire_in)
         self.__is_login = True
         logger.debug("login success, AccessToken: %s", self.access_token)
@@ -145,10 +145,10 @@ class DnsDBClient(object):
     def refresh_access_token(self):
         logger.debug("refresh access token")
         if not self.__is_login:
-            raise errors.AuthenticationError.require_login_error()
+            raise AuthenticationError.require_login_error()
         auth = self.api_client.authorize(self.username, self.password)
         if auth.has_error():
-            raise errors.AuthenticationError(auth.message)
+            raise AuthenticationError(auth.message)
         self.access_token = AccessToken(auth.access_token, auth.expire_in)
 
     @require_token
@@ -164,9 +164,9 @@ class DnsDBClient(object):
         return SearchResult(total=total, data=data, remaining_request=remaining_request)
 
     @require_token
-    def retrieve_dns(self, domain=None, host=None, ip=None, dns_type=None, start=0):
+    def retrieve_dns(self, domain=None, host=None, ip=None, dns_type=None):
         response = self.api_client.request_search_id(access_token=self.access_token.token, domain=domain, host=host,
-                                                     ip=ip, dns_type=dns_type, start=start)
+                                                     ip=ip, dns_type=dns_type)
         self.__check_error(response)
         total = response.content['total']
         search_id = response.content['id']
@@ -191,8 +191,8 @@ class DnsDBClient(object):
     def __check_error(self, response):
         if response.status_code == 401:
             self.__is_login = False
-            raise errors.AuthenticationError(response.message)
+            raise AuthenticationError(response.message)
         elif 400 <= response.status_code < 500:
-            raise errors.DnsDBException(response.message)
+            raise DnsDBException(response.message)
         if response.status_code >= 500:
-            raise errors.APIServerError()
+            raise APIServerError()

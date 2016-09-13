@@ -49,11 +49,11 @@ class APIClient(object):
             params['host'] = host
         if dns_type:
             params['type'] = dns_type
-        params['start'] = start
+        params['from'] = start
         response = self.session.get(self.SEARCH_DNS_URL, params=params, headers=headers)
         return APIResponse(response.json(), response.status_code)
 
-    def request_search_id(self, access_token, start=0, domain=None, ip=None, host=None, dns_type=None):
+    def request_search_id(self, access_token, domain=None, ip=None, host=None, dns_type=None):
         headers = {'Access-Token': access_token}
         params = {}
         if domain:
@@ -64,7 +64,6 @@ class APIClient(object):
             params['host'] = host
         if dns_type:
             params['type'] = dns_type
-        params['start'] = start
         response = self.session.get(self.SEARCH_ALL_DNS_URL, params=params, headers=headers)
         return APIResponse(response.json(), response.status_code)
 
