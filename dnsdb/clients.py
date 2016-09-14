@@ -122,12 +122,13 @@ def require_token(func):
 
 
 class DnsDBClient(object):
-    def __init__(self):
-        self.api_client = APIClient()
+    def __init__(self, proxies=None):
+        self.api_client = APIClient(proxies=proxies)
         self.username = None
         self.password = None
         self.access_token = AccessToken(None, 0)
         self.__is_login = False
+        self.proxies = proxies
 
     def login(self, username, password):
         self.username = username

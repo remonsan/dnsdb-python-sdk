@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from .__init__ import __version__
 import requests
-import json
 
 
 class APIResponse(object):
@@ -26,8 +26,10 @@ class AuthorizeResponse(APIResponse):
 class APIClient(object):
     API_BASE_URL = 'https://dnsdb.io/api/v1'
 
-    def __init__(self):
+    def __init__(self, proxies=None):
         self.session = requests.Session()
+        self.session.proxies = proxies
+        self.session.headers = {'User-Agent': "DnsDB Python SDK(%s)" % __version__}
         self.AUTHORIZE_URL = self.API_BASE_URL + "/authorize"
         self.SEARCH_DNS_URL = self.API_BASE_URL + "/dns/search"
         self.SEARCH_ALL_DNS_URL = self.API_BASE_URL + "/dns/search_all"
