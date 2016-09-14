@@ -72,23 +72,23 @@ class SearchResult(object):
 class RetrieveResult(object):
     def __init__(self, total, search_id, client):
         self.total = total
-        self.search_id = search_id
-        self.client = client
         self.remaining_request = None
-        self.current_set = []
+        self.__search_id = search_id
+        self.__client = client
+        self.__current_set = []
 
     def __next__(self):
         return self.next()
 
     def next(self):
-        if len(self.current_set) == 0:
+        if len(self.__current_set) == 0:
             try:
-                search_result = self.client.retrieve_dns_once(self.search_id)
-                self.current_set = search_result.data
+                search_result = self.__client._DnsDBClient__retrieve_dns_once(self.__search_id)
+                self.__current_set = search_result.data
                 self.remaining_request = search_result.remaining_request
-                if len(self.current_set) > 0:
-                    data = self.current_set[0]
-                    self.current_set.remove(data)
+                if len(self.__current_set) > 0:
+                    data = self.__current_set[0]
+                    self.__current_set.remove(data)
                     return data
                 else:
                     raise StopIteration
@@ -98,8 +98,8 @@ class RetrieveResult(object):
                 else:
                     raise e
         else:
-            data = self.current_set[0]
-            self.current_set.remove(data)
+            data = self.__current_set[0]
+            self.__current_set.remove(data)
             return data
 
     def __iter__(self):
@@ -173,7 +173,8 @@ class DnsDBClient(object):
         search_id = response.content['id']
         return RetrieveResult(total=total, search_id=search_id, client=self)
 
-    def retrieve_dns_once(self, search_id):
+    @require_token
+    def __retrieve_dns_once(self, search_id):
         response = self.api_client.retrieve_dns(self.access_token.token, search_id)
         self.__check_error(response)
         total = response.content['total']
