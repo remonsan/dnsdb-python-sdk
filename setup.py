@@ -31,5 +31,5 @@ setup(
         'Programming Language :: Python :: 3.5',
     ],
     zip_safe=False,
-    install_requires=['requests', ],
+    install_requires=['requests[socks]', ],
 )
