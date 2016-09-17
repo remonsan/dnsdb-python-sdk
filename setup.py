@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 PACKAGE = "dnsdb"
-NAME = "dnsdb python sdk"
+NAME = "dnsdb-python-sdk"
 DESCRIPTION = "DnsDB Python SDK"
 AUTHOR = "DnsDB Team"
 AUTHOR_EMAIL = "team@dnsdb.io"
