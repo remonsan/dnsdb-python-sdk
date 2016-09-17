@@ -1,6 +1,6 @@
 {
   "name": "DnsDB Python SDK",
   "tagline": "",
-  "body": "# DnsDB Python SDK\r\n\r\n![DnsDB](https://dnsdb.io/static/img/dnsdb.png \"DnsDB\")\r\n\r\n**dnsdb-python-sdk** 是[DnsDB](https://dnsdb.io)为开发者提供的python SDK。使用该SDK，您可以方便的将DnsDB的查询服务集成到您的python应用中，您也可以利用它来导出查询结果。[查看教程](https://github.com/dnsdb-team/dnsdb-python-sdk/wiki/Tutorials)\r\n\r\n# Install\r\n\r\n```shell\r\ngit clone https://github.com/dnsdb-team/dnsdb-python-sdk.git\r\ncd dnsdb-python-sdk\r\nsudo python setup.py install\r\n```\r\n\r\n# 相关链接\r\n* [教程](https://github.com/dnsdb-team/dnsdb-python-sdk/wiki/Tutorials)\r\n* [DnsDB官网](https://dnsdb.io)\r\n* [DnsDB API服务介绍](https://dnsdb.io/apiservice)\r\n* [DnsDB Web API](https://dnsdb.io/apidoc/)",
+  "body": "# DnsDB Python SDK\r\n\r\n![DnsDB](https://dnsdb.io/static/img/dnsdb.png \"DnsDB\")\r\n\r\n**dnsdb-python-sdk** 是[DnsDB](https://dnsdb.io) 为开发者提供的python SDK。使用该SDK，您可以方便的将DnsDB的查询服务集成到您的python应用中，您也可以利用它来导出查询结果。[查看教程](https://github.com/dnsdb-team/dnsdb-python-sdk/wiki/Tutorials)\r\n\r\n# Install\r\n\r\n```shell\r\npip install dnsdb-python-sdk\r\n```\r\n\r\n# 相关链接\r\n* [DnsDB官网](https://dnsdb.io)\r\n* [DnsDB API服务介绍](https://dnsdb.io/apiservice)\r\n* [DnsDB Web API](https://dnsdb.io/apidoc/)\r\n# [GetDNS - 基于DnsDB-Python-SDK开发的命令行工具](https://getdns.dnsdb.io)",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
