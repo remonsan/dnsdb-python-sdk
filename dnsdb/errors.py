@@ -8,7 +8,7 @@ class DnsDBException(Exception):
         self.message = value
 
     def __str__(self):
-        return repr(self.value)
+        return self.value
 
 
 class AuthenticationError(DnsDBException):
