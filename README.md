@@ -5,6 +5,7 @@
 [![pypi-version]][pypi]
 [![python-version]][pypi]
 [![license]][pypi]
+[![Code Health](https://landscape.io/github/dnsdb-team/dnsdb-python-sdk/master/landscape.svg?style=flat)](https://landscape.io/github/dnsdb-team/dnsdb-python-sdk/master)
 
 **dnsdb-python-sdk** 是[DnsDB](https://dnsdb.io) 为开发者提供的python SDK。使用该SDK，您可以方便的将DnsDB的查询服务集成到您的python应用中，您也可以利用它来导出查询结果。[查看教程](https://github.com/dnsdb-team/dnsdb-python-sdk/wiki/Tutorials)
 
