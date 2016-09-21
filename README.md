@@ -1,5 +1,7 @@
 # DnsDB Python SDK
 
+[![build-status-image]][travis]
+[![coverage-status-image]][codecov]
 [![pypi-version]][pypi]
 [![python-version]][pypi]
 [![license]][pypi]
@@ -18,6 +20,10 @@ pip install --upgrade dnsdb-python-sdk
 * [DnsDB Web API](https://dnsdb.io/apidoc/)
 * [GetDNS - 基于DnsDB-Python-SDK开发的命令行工具](https://getdns.dnsdb.io)
 
+[build-status-image]: https://img.shields.io/travis/dnsdb-team/dnsdb-python-sdk/master.svg
+[travis]: https://travis-ci.org/dnsdb-team/dnsdb-python-sdk
+[coverage-status-image]: https://img.shields.io/codecov/c/github/dnsdb-team/dnsdb-python-sdk/master.svg
+[codecov]: http://codecov.io/github/dnsdb-team/dnsdb-python-sdk?branch=master
 [pypi-version]: https://img.shields.io/pypi/v/dnsdb-python-sdk.svg
 [pypi]: https://pypi.python.org/pypi/dnsdb-python-sdk
 [python-version]: https://img.shields.io/pypi/pyversions/dnsdb-python-sdk.svg
