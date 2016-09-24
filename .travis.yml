@@ -10,6 +10,7 @@ python:
   - "pypy"
 
 install:
+  - pip install coverage
   - git clone https://github.com/dnsdb-team/dnsdb-mock-apiserver.git
   - cd dnsdb-mock-apiserver
   - python setup.py install
