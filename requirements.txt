@@ -1,0 +1,4 @@
+requests==2.11.1
+setuptools==27.1.2
+dnsdb_mock_apiserver==0.1.0a1
+nose==1.3.7
