@@ -19,7 +19,7 @@ pip install --upgrade dnsdb-python-sdk
 # 相关链接
 * [DnsDB官网](https://dnsdb.io)
 * [DnsDB API服务介绍](https://dnsdb.io/apiservice)
-* [DnsDB Web API](https://dnsdb.io/apidoc/)
+* [DnsDB Web API](https://apidoc.dnsdb.io)
 * [GetDNS - 基于DnsDB-Python-SDK开发的命令行工具](https://getdns.dnsdb.io)
 
 [build-status-image]: https://img.shields.io/travis/dnsdb-team/dnsdb-python-sdk/master.svg

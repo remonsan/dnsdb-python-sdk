@@ -1,6 +1,6 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
-PACKAGE = "dnsdb"
+PACKAGE = "dnsdb_sdk"
 NAME = "dnsdb-python-sdk"
 DESCRIPTION = "DnsDB Python SDK"
 AUTHOR = "DnsDB Team"
@@ -16,7 +16,7 @@ setup(
     author_email=AUTHOR_EMAIL,
     license="BSD License",
     url=URL,
-    packages=find_packages(),
+    packages=find_packages(exclude=['docs', 'tests']),
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
@@ -29,7 +29,8 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
     zip_safe=False,
-    install_requires=['requests[socks]', ],
+    install_requires=['requests[socks]'],
 )
