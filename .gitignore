@@ -7,3 +7,4 @@ dist/
 *.log
 .coverage
 coverage.xml
+.DS_Store

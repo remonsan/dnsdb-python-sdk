@@ -3,8 +3,7 @@ from __future__ import print_function, unicode_literals
 import uuid
 
 from nose import with_setup
-from nose.tools import (assert_equal, assert_false, assert_is_none,
-                        assert_is_not_none, assert_true)
+from nose.tools import assert_equal
 
 from dnsdb_sdk.api import APIClient
 from dnsdb_sdk.exceptions import APIException
