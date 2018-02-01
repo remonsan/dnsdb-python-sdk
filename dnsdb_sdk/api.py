@@ -104,7 +104,7 @@ class ScanResult(object):
             try:
                 if self.__record_count == self.total:
                     raise StopIteration()
-                scan_response = self.__client.scan_next_response(self.__scan_id)
+                scan_response = self.__client.next_dns_scan(self.__scan_id)
                 self.request_times += 1
                 self.__current_data_set = scan_response.records
                 self.remaining_requests = scan_response.remaining_requests
@@ -180,7 +180,7 @@ class APIClient(object):
             params['page'] = 1
         if page_size:
             params['size'] = page_size
-        return self.__request_get(self.__get_api_url('search'), params=params)
+        return self.__request_get(self.__get_api_url('dns/search'), params=params)
 
     def get_api_user_response(self):
         return self.__request_get(self.__get_api_url('api_user'))
@@ -214,8 +214,8 @@ class APIClient(object):
                            remaining_requests=data.get('remaining_requests'), creation_time=data.get('creation_time'),
                            expiration_time=data.get('expiration_time'))
 
-    def create_scan_response(self, domain=None, ip=None, host=None, dns_type=None, value_domain=None, value_host=None,
-                             value_ip=None, email=None, per_size=None):
+    def create_dns_scan(self, domain=None, ip=None, host=None, dns_type=None, value_domain=None, value_host=None,
+                        value_ip=None, email=None, per_size=None):
         params = {}
         if domain:
             params['domain'] = domain
@@ -235,16 +235,17 @@ class APIClient(object):
             params['email'] = email
         if per_size:
             params['size'] = per_size
-        response = self.__request_get(self.__get_api_url('scan/create'), params=params)
+        response = self.__request_get(self.__get_api_url('dns/scan/create'), params=params)
         return ScanResponse(response.content, response.status_code)
 
-    def scan_next_response(self, scan_id):
-        response = self.__request_get(self.__get_api_url('scan/next'), params={'scan_id': scan_id})
+    def next_dns_scan(self, scan_id):
+        response = self.__request_get(self.__get_api_url('dns/scan/next'), params={'scan_id': scan_id})
         return ScanResponse(response.content, response.status_code)
 
-    def scan(self, domain=None, ip=None, host=None, dns_type=None, value_domain=None, value_host=None, value_ip=None,
-             email=None, per_size=None):
-        scan_response = self.create_scan_response(domain=domain, ip=ip, host=host, dns_type=dns_type,
-                                                  value_domain=value_domain, value_host=value_host, value_ip=value_ip,
-                                                  email=email, per_size=per_size)
+    def scan_dns(self, domain=None, ip=None, host=None, dns_type=None, value_domain=None, value_host=None,
+                 value_ip=None,
+                 email=None, per_size=None):
+        scan_response = self.create_dns_scan(domain=domain, ip=ip, host=host, dns_type=dns_type,
+                                             value_domain=value_domain, value_host=value_host, value_ip=value_ip,
+                                             email=email, per_size=per_size)
         return ScanResult(scan_response, self)

@@ -85,17 +85,17 @@ def set_api_user_response_and_restart(response):
     restart()
 
 
-@app.route('/v1/search')
+@app.route('/v1/dns/search')
 def search():
     return jsonify(search_response)
 
 
-@app.route('/v1/scan/create')
+@app.route('/v1/dns/scan/create')
 def scan_create():
     return jsonify(scan_create_response)
 
 
-@app.route('/v1/scan/next')
+@app.route('/v1/dns/scan/next')
 def scan_next():
     return jsonify(scan_next_response)
 

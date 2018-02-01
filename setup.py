@@ -12,6 +12,7 @@ setup(
     name=NAME,
     version=VERSION,
     description=DESCRIPTION,
+    long_description=open('README.rst').read(),
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     license="BSD License",
@@ -31,6 +32,7 @@ setup(
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
     ],
+    python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, <4',
     zip_safe=False,
     install_requires=['requests[socks]'],
 )

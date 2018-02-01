@@ -83,27 +83,27 @@ def test_scan():
         'total': total
     }
     api_mock_server.restart()
-    result = client.scan(domain='google.com', dns_type='a', host='', ip='', value_host='', value_ip='', value_domain='',
-                         email='', per_size=3)
+    result = client.scan_dns(domain='google.com', dns_type='a', host='', ip='', value_host='', value_ip='', value_domain='',
+                             email='', per_size=3)
     assert_equal(result.total, total)
     assert_equal(len(result), total)
     count = 0
     for _ in result:
         count += 1
     assert_equal(count, total)
-    check_api_exception(client.scan, errors.AUTHENTICATION_FAILED)
-    check_api_exception(client.scan, errors.INVALID_API_ID)
-    check_api_exception(client.scan, errors.INVALID_API_KEY)
-    check_api_exception(client.scan, errors.INVALID_DOMAIN)
-    check_api_exception(client.scan, errors.INVALID_IP)
-    check_api_exception(client.scan, errors.INVALID_HOST)
-    check_api_exception(client.scan, errors.INVALID_VALUE_DOMAIN)
-    check_api_exception(client.scan, errors.INVALID_VALUE_HOST)
-    check_api_exception(client.scan, errors.INVALID_VALUE_IP)
-    check_api_exception(client.scan, errors.INVALID_SIZE)
-    check_api_exception(client.scan, errors.INTERNAL_ERROR)
-    check_api_exception(client.scan, errors.TOO_LARGE_IP_RANGE)
-    check_api_exception(client.scan, errors.TOO_LARGE_RESULT_WINDOW)
+    check_api_exception(client.scan_dns, errors.AUTHENTICATION_FAILED)
+    check_api_exception(client.scan_dns, errors.INVALID_API_ID)
+    check_api_exception(client.scan_dns, errors.INVALID_API_KEY)
+    check_api_exception(client.scan_dns, errors.INVALID_DOMAIN)
+    check_api_exception(client.scan_dns, errors.INVALID_IP)
+    check_api_exception(client.scan_dns, errors.INVALID_HOST)
+    check_api_exception(client.scan_dns, errors.INVALID_VALUE_DOMAIN)
+    check_api_exception(client.scan_dns, errors.INVALID_VALUE_HOST)
+    check_api_exception(client.scan_dns, errors.INVALID_VALUE_IP)
+    check_api_exception(client.scan_dns, errors.INVALID_SIZE)
+    check_api_exception(client.scan_dns, errors.INTERNAL_ERROR)
+    check_api_exception(client.scan_dns, errors.TOO_LARGE_IP_RANGE)
+    check_api_exception(client.scan_dns, errors.TOO_LARGE_RESULT_WINDOW)
 
 
 @with_setup(setup_func, teardown_func)
